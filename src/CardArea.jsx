@@ -33,11 +33,9 @@ const CardArea = () => {
 
 
     return (
-        <div>
-            <select 
-                values={filterAttribute} 
-                onChange={(e) => setFilterAttribute(e.target.value)}
-            >
+        <div className="container">
+            <img src="/paldict_logo.png" className="logo"/>
+            <select value={filterAttribute} onChange={(e) => setFilterAttribute(e.target.value)}>
                 <option value="Name">Name</option>
                 <option value="Type">Type</option>
             </select>
@@ -47,9 +45,11 @@ const CardArea = () => {
                 onChange={(e) => setFilter(e.target.value)}
                 placeholder="Filter pals..."
             />
-            {filteredPalData.map((pal, index) => (
-                <Card key={index} pal={pal} />
-            ))}
+            <div className="cardArea">
+                {filteredPalData.map((pal, index) => (
+                    <Card key={index} pal={pal} />
+                ))}
+            </div>
         </div>
     );
 };

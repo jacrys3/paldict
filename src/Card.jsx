@@ -24,7 +24,7 @@ const Card = ({pal}) => {
     const element = `${element1} ${element2}`;
 
     return (
-        <div class='card'>
+        <div className='card'>
             <h3>{pal.Name}</h3>
             <p>Type: {element}</p>
             {getElementImage(element1, element2)}

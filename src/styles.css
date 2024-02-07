@@ -1,6 +1,24 @@
-.card {
-    border: 3px solid #ccc;
-    border-radius: 25px;
+.cardArea {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+    gap: 20px; 
     padding: 10px;
-    margin: 10px;
+    margin: auto; 
+    max-width: 80%; 
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    width: 240px;
+    margin: auto;
+}
+
+.container {
+    width: 100%;
+}
+
+.logo {
+    width: 25%;
 }
