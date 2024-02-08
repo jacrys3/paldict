@@ -5,19 +5,42 @@ import Card from './Card';
 
 
 const CardArea = () => {
-    const [palData, setCards] = useState([]);
+    const [palData, setPalData] = useState([]);
     const [filter, setFilter] = useState("");
     const [filterAttribute, setFilterAttribute] = useState("Name");
+    const [sortCriteria, setSortCriteria] = useState('nameAsc');
+
+    const sortByNameAsc = (a, b) => a.Name.localeCompare(b.Name);
+    const sortByNameDesc = (a, b) => b.Name.localeCompare(a.Name);
+    //const sortByType = (a, b) => a.Element.localeCompare(b.Name);
+
 
     useEffect(() => {
         Papa.parse(csvFile, {
             download: true,
             header: true,
             complete: function(results) {
-                setCards(results.data);
+                setPalData(results.data);
             }
         });
     }, []);
+
+    useEffect(() => {
+        let sortedData = [...palData];
+
+        switch (sortCriteria) {
+            case 'nameAsc':
+                sortedData.sort(sortByNameAsc);
+                break;
+            case 'nameDesc':
+                sortedData.sort(sortByNameDesc);
+                break;
+            default:
+                break;
+        }
+
+        setPalData(sortedData);
+    }, [sortCriteria, palData]);
 
 
     const filteredPalData = palData.filter(pal => {
@@ -45,6 +68,10 @@ const CardArea = () => {
                 onChange={(e) => setFilter(e.target.value)}
                 placeholder="Filter pals..."
             />
+            <select value={sortCriteria} onChange={(e) => setSortCriteria(e.target.value)}>
+                <option value="nameAsc">Name a-z</option>
+                <option value="nameDesc">Name z-a</option>
+            </select>
             <div className="cardArea">
                 {filteredPalData.map((pal, index) => (
                     <Card key={index} pal={pal} />
