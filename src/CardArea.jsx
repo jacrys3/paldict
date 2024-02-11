@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Papa from 'papaparse';
 import csvFile from './PalData.csv';
 import Card from './Card';
@@ -25,9 +25,9 @@ const CardArea = () => {
         });
     }, []);
 
-    useEffect(() => {
-        let sortedData = [...palData];
 
+    const sortedAndFilteredPalData = useMemo(() => {
+        let sortedData = [...palData];
         switch (sortCriteria) {
             case 'nameAsc':
                 sortedData.sort(sortByNameAsc);
@@ -39,25 +39,22 @@ const CardArea = () => {
                 break;
         }
 
-        setPalData(sortedData);
-    }, [sortCriteria, palData]);
+        return sortedData.filter(pal => {
+            if (filterAttribute === "Type") {
+                const type1Match = pal.ElementType1 ? pal.ElementType1.toString().slice(17).toLowerCase().includes(filter.toLowerCase()) : false;
+                const type2Match = pal.ElementType2 ? pal.ElementType2.toString().slice(17).toLowerCase().includes(filter.toLowerCase()) : false;
+                return type1Match || type2Match;
+            }
+            
+            const attributeValue = pal[filterAttribute] ? pal[filterAttribute].toString() : '';
+            return attributeValue.toLowerCase().includes(filter.toLowerCase());
+        });
 
-
-    const filteredPalData = palData.filter(pal => {
-        if (filterAttribute === "Type") {
-            const type1Match = pal.ElementType1 ? pal.ElementType1.toString().toLowerCase().includes(filter.toLowerCase()) : false;
-            const type2Match = pal.ElementType2 ? pal.ElementType2.toString().toLowerCase().includes(filter.toLowerCase()) : false;
-            return type1Match || type2Match;
-        }
-        
-        const attributeValue = pal[filterAttribute] ? pal[filterAttribute].toString() : '';
-        return attributeValue.toLowerCase().includes(filter.toLowerCase());
-    });
+    }, [palData, filterAttribute, filter, sortCriteria]);
 
 
     return (
         <div className="container">
-            <img src="/paldict_logo.png" className="logo"/>
             <select value={filterAttribute} onChange={(e) => setFilterAttribute(e.target.value)}>
                 <option value="Name">Name</option>
                 <option value="Type">Type</option>
@@ -73,7 +70,7 @@ const CardArea = () => {
                 <option value="nameDesc">Name z-a</option>
             </select>
             <div className="cardArea">
-                {filteredPalData.map((pal, index) => (
+                {sortedAndFilteredPalData.map((pal, index) => (
                     <Card key={index} pal={pal} />
                 ))}
             </div>
