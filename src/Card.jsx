@@ -15,10 +15,6 @@ const Card = ({pal}) => {
         );
     };
 
-    if (pal.Name.toLowerCase().startsWith('alpha')) {
-        return null;
-    }
-
     const element1 = pal.ElementType1.slice(17);
     const element2 = pal.ElementType2.slice(17) !== 'None' ? pal.ElementType2.slice(17) : '';
     const element = `${element1} ${element2}`;
