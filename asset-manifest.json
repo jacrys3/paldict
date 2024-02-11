@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/paldict/static/css/main.f1a0e71c.css",
+    "main.js": "/paldict/static/js/main.46db7116.js",
+    "static/js/592.b392f513.chunk.js": "/paldict/static/js/592.b392f513.chunk.js",
+    "static/media/PalData.csv": "/paldict/static/media/PalData.3e4a2242041c6c95526e.csv",
+    "static/media/Dark_icon_mini.webp": "/paldict/static/media/Dark_icon_mini.fc2f9d80283c39195a53.webp",
+    "static/media/Ice_icon_mini.webp": "/paldict/static/media/Ice_icon_mini.76fdba73b39e466f88af.webp",
+    "static/media/Dragon_icon_mini.webp": "/paldict/static/media/Dragon_icon_mini.c515ba828ca0f71e444f.webp",
+    "static/media/Fire_icon_mini.webp": "/paldict/static/media/Fire_icon_mini.b7c343cbea00d6bf0f10.webp",
+    "static/media/Normal_icon_mini.webp": "/paldict/static/media/Normal_icon_mini.afbeb65750fae35b651c.webp",
+    "static/media/Leaf_icon_mini.webp": "/paldict/static/media/Leaf_icon_mini.47a13ec4fa155b0c8176.webp",
+    "static/media/Water_icon_mini.webp": "/paldict/static/media/Water_icon_mini.d8fff137a13edbb187f8.webp",
+    "static/media/Earth_icon_mini.webp": "/paldict/static/media/Earth_icon_mini.54707a64a262bb4f6e03.webp",
+    "index.html": "/paldict/index.html",
+    "static/media/Electricity_icon_mini.webp": "/paldict/static/media/Electricity_icon_mini.f00d3c1af1ef57a1040e.webp",
+    "main.f1a0e71c.css.map": "/paldict/static/css/main.f1a0e71c.css.map",
+    "main.46db7116.js.map": "/paldict/static/js/main.46db7116.js.map",
+    "592.b392f513.chunk.js.map": "/paldict/static/js/592.b392f513.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f1a0e71c.css",
+    "static/js/main.46db7116.js"
+  ]
+}
